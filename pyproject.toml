@@ -1,11 +1,14 @@
 [project]
-name = "mcp-client"
+name = "mcp-adk-learn"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
-    "anthropic>=0.51.0",
-    "mcp>=1.8.0",
+    "google-adk>=0.5.0",
+    "google-generativeai>=0.8.5",
+    "litellm>=1.69.2",
+    "psutil>=7.0.0",
     "python-dotenv>=1.1.0",
+    "yfinance>=0.2.61",
 ]
