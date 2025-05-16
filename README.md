@@ -8,6 +8,14 @@ Setup:
 uv sync # activate venv if required.
 ```
 
-2. Run projects:
+2. Make `agents` folder discoverable for imports:
 
-See here: [01_basic_agent](./01_basic_agent/README.md)
+```sh
+uv pip install -e .
+```
+
+3. Run projects:
+
+See here: 
+1. [basic_agent](./agents/01_basic_agent/README.md)
+2. [tools_agent](./agents/02_tools_agent/README.md)

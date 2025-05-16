@@ -7,7 +7,7 @@ To run:
 1. Navigate to `01_basic_agent` from root:
 
 ```sh
-cd 01_basic_agent
+cd agents/01_basic_agent
 ```
 
 2. Start the web version:
