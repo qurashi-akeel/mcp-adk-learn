@@ -1,17 +1,17 @@
 import random
+
 from google.adk.agents import Agent
 
 from agents.local_model import llm_model
 
 
-def get_joke():
+def get_joke() -> str:
     """
     A simple function to return a random joke.
 
     This function is used as a tool in the agent.
     """
-
-    jokes = [
+    jokes: list[str] = [
         "Why did the scarecrow win an award? Because he was outstanding in his field!",
         "Why don't scientists trust atoms? Because they make up everything!",
         "Why did the bicycle fall over? Because it was two-tired!",

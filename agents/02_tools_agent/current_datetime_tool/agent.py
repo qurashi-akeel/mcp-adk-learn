@@ -1,6 +1,8 @@
-from google.adk.agents import Agent
-import datetime
+from datetime import datetime
 from zoneinfo import ZoneInfo
+
+from google.adk.agents import Agent
+
 from agents.local_model import llm_model
 
 
@@ -10,23 +12,25 @@ def get_current_datetime(tz_identifier: str) -> dict:
 
     Args:
         tz_identifier (str): The tz_identifier of the city for which to retrieve the current date and time.
-        Example:
-            - new york = "America/New_York"
-            - London = "Europe/London"
-            - Tokyo = "Asia/Tokyo"
-            - dubia = "Asia/Dubai"
-            - sydney = "Australia/Sydney"
+
+    Example:
+        - new york = "America/New_York"
+        - London = "Europe/London"
+        - Tokyo = "Asia/Tokyo"
+        - dubia = "Asia/Dubai"
+        - sydney = "Australia/Sydney"
 
     Tool Return format:
         message: The current date and time in {city} is {time}.
+
     """
     print(f"\nCalling datetime tool with {tz_identifier}\n")
     tz = ZoneInfo(tz_identifier)
-    now = datetime.datetime.now(tz)
-    current = now.strftime("%Y-%m-%d %H:%M:%S %Z%z")
+    now: datetime = datetime.now(tz)
+    current: str = now.strftime("%Y-%m-%d %H:%M:%S %Z%z")
 
     return {
-        "message": f"The current date and time in {tz_identifier.split("/")[1]} is {current}."
+        "message": f"The current date and time in {tz_identifier.split('/')[1]} is {current}.",
     }
 
 
@@ -39,15 +43,14 @@ def magic_sum_string(user_string: str) -> dict:
 
     Tool Return format:
         message: The magic sum {user_string} is {sum}.
+
     """
     print(f"\nCalling magic sum tool with {user_string}\n")
-    sum = 0
+    total = 0
     for char in user_string:
-        sum += ord(char)
+        total += ord(char)
 
-    return {
-        "message": f"The magic sum {user_string} is {sum}."
-    }
+    return {"message": f"The magic sum {user_string} is {total}."}
 
 
 root_agent = Agent(

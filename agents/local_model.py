@@ -1,6 +1,7 @@
-from google.adk.models.lite_llm import LiteLlm
 import os
+
 from dotenv import load_dotenv
+from google.adk.models.lite_llm import LiteLlm
 
 load_dotenv()
 
@@ -18,16 +19,14 @@ def llm_model(
     if len(model_name.split("/")) == 1:  # local model
         return LiteLlm(model=f"ollama/{model_name}")
 
-    else:  # remote model
-        match model_name.split("/")[0]:
-            case "openai":
-                api_key = os.getenv("OPENAI_API_KEY")
-            case "gemini":
-                api_key = os.getenv("GEMINI_API_KEY")
-            case _:
-                raise ValueError(f"{model_name} is not supported.")
+    # remote model
+    match model_name.split("/")[0]:
+        case "openai":
+            api_key = os.getenv("OPENAI_API_KEY")
+        case "gemini":
+            api_key = os.getenv("GEMINI_API_KEY")
+        case _:
+            msg: str = f"{model_name} is not supported."
+            raise ValueError(msg)
 
-    return LiteLlm(
-        model=model_name,
-        api_key=api_key
-    )
+    return LiteLlm(model=model_name, api_key=api_key)
