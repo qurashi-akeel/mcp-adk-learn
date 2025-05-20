@@ -1,7 +1,7 @@
 from google.adk.agents import Agent
 import datetime
 from zoneinfo import ZoneInfo
-from agents.local_model import ollama_model
+from agents.local_model import llm_model
 
 
 def get_current_datetime(tz_identifier: str) -> dict:
@@ -54,7 +54,7 @@ root_agent = Agent(
     name="time_sum_agent",
     description="Agent to retrieve the current time for the given city and magic sum of a string.",
     # Here we are using the reasoning model to generate the tools because other models don't work well with tools.
-    model=ollama_model("qwen3:4b"),
+    model=llm_model("qwen3:4b"),
     instruction="You are a helpful agent who can provide the current time of a city or magic sum of a string.",
     tools=[get_current_datetime, magic_sum_string],
 )

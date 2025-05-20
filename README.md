@@ -19,3 +19,4 @@ uv pip install -e .
 See here: 
 1. [basic_agent](./agents/01_basic_agent/README.md)
 2. [tools_agent](./agents/02_tools_agent/README.md)
+3. [openrouter_api_agent](./agents/03_openrouter_api_agent/README.md)
