@@ -21,10 +21,9 @@ def llm_model(
 
     # remote model
     match model_name.split("/")[0]:
+        # In case of gemini we can pass it directly
         case "openai":
             api_key = os.getenv("OPENAI_API_KEY")
-        case "gemini":
-            api_key = os.getenv("GEMINI_API_KEY")
         case _:
             msg: str = f"{model_name} is not supported."
             raise ValueError(msg)
